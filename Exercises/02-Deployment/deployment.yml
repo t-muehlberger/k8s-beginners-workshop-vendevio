@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-name
+spec:
+  selector:
+    matchLabels:
+      app: my-app-name
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-app-name
+    spec:
+      containers:
+      - image: nginxdemos/hello:0.1
+        name: my-pod
+        env:
+        - name: ENVVARNAME
+          value: ENVVARVALUE       
+        ports:
+        - containerPort:  80
+          name: my-app-port
+        imagePullPolicy: Always

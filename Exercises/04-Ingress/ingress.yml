@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: <my-ingress-name>
+spec:
+  rules:
+  - host: <first-name>.cluster.vendev.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: <my-service-name>
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
