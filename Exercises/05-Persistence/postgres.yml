@@ -19,12 +19,14 @@ spec:
           env:
             - name: POSTGRES_PASSWORD
               value: super-secure-pwd
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
           ports:
             - containerPort: 5432
               name: postgres
           volumeMounts:
             - name: postgres-persistent-storage
-              mountPath: /var/lib/postgresql
+              mountPath: /var/lib/postgresql/data
           imagePullPolicy: Always
       volumes:
         - name: postgres-persistent-storage
